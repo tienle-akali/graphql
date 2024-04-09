@@ -1,7 +1,9 @@
-// import nextConfig from "../next.config.mjs";
+import nextConfig from "../next.config.mjs";
+
+const { basePath } = nextConfig;
 
 const renderImagePath = (path) => {
-  return path; //`${nextConfig.basePath}${path}`;
+  return basePath ? `${basePath}${path}` : path;
 };
 
 export { renderImagePath };
