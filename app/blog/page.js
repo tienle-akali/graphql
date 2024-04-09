@@ -1,67 +1,17 @@
 "use client";
 import { renderImagePath } from "@/utils/image";
-import { AppBar, Toolbar, Typography } from "@mui/material";
-import axios from "axios";
+import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
 
-const UserDetails = () => {
-  const searchParams = useSearchParams();
-  const userId = searchParams.get("userId");
-  const [userData, setUserData] = useState(null);
-
-  console.log("userId : ", userId);
-
-  useEffect(() => {
-    if (userId) {
-      axios
-        .get(`http://your-wordpress-site/wp-json/user-details/${userId}`)
-        .then((response) => {
-          setUserData(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching user data:", error);
-        });
-    }
-  }, [userId]);
-
-  return (
-    <div>
-      {userData ? (
-        <div>
-          <h1>User Details</h1>
-          <p>ID: {userData.id}</p>
-          <p>Name: {userData.name}</p>
-          <p>Birth Year: {userData.birthYear}</p>
-        </div>
-      ) : (
-        <Typography variant="h6" color="red">
-          Loading... {userId}
-        </Typography>
-      )}
-    </div>
-  );
-};
-
-export default function Home() {
+export default function About() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <AppBar color="primary" position="fixed">
-        <Toolbar className="justify-center gap-6">
-          <Link href="/about">About</Link>
-          <Link href="/blog">Blog</Link>
-        </Toolbar>
-      </AppBar>
-      <Suspense>
-        <UserDetails />
-      </Suspense>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
+        <Link href="/">Back</Link>
+        <Typography variant="h1" className="text-center">
+          Blog
+        </Typography>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
