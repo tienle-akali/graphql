@@ -1,9 +1,8 @@
 "use client";
 import { renderImagePath } from "@/utils/image";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
@@ -37,7 +36,7 @@ const UserDetails = () => {
           <p>Birth Year: {userData.birthYear}</p>
         </div>
       ) : (
-        <Typography variant="h6" color="red">
+        <Typography variant="h6" color="primary">
           Loading... {userId}
         </Typography>
       )}
@@ -48,12 +47,6 @@ const UserDetails = () => {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <AppBar color="primary" position="fixed">
-        <Toolbar className="justify-center gap-6">
-          <Link href="/about">About</Link>
-          <Link href="/blog">Blog</Link>
-        </Toolbar>
-      </AppBar>
       <Suspense>
         <UserDetails />
       </Suspense>
